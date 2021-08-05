@@ -1,0 +1,7 @@
+{
+  "name": "mozionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
