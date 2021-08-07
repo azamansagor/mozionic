@@ -1,14 +1,12 @@
-import React, {useState, useEffect, useContext} from 'react';
-import { IonList, IonItem, IonButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItemSliding, IonItemOption, IonItemOptions, IonContent } from '@ionic/react';
-import {AppContext} from "../Context"
+import React from 'react';
+import { IonCard, IonCardHeader, IonButton, IonCardSubtitle, IonCardTitle, IonCardContent, IonContent } from '@ionic/react';
+const Releases: React.FC<> = (props) => {
 
-const Releases: React.FC = (props) => {
-
-const {items} = props;
+const {items, history} = props;
 
 
   return (
-    <IonContent>
+    <>
         {
             items && 
             items.map( (item, key ) => {
@@ -16,16 +14,17 @@ const {items} = props;
                 return (
                     <IonCard key={key}>
                         <IonCardHeader>
-                            <IonCardSubtitle>{repository.releases_url} - {repository.id}</IonCardSubtitle>
+                            <IonCardSubtitle>{repository.releases_url} - {repository.id} - {repository.name}</IonCardSubtitle>
                             <IonCardTitle>{repository.name}</IonCardTitle>
                         </IonCardHeader>
                         <IonCardContent>{repository.description}</IonCardContent>
-                        <IonButton color="primary">Primary</IonButton>
+
+                        <IonButton color="primary" routerDirection="none" href={`/releases/${repository.name}/${repository.id}`}>Releases</IonButton>
                     </IonCard>
                 )
             })
         }
-    </IonContent>
+    </>
   )
 };
 

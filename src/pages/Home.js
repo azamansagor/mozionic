@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFooter} from '@ionic/react';
 import Releases from '../components/releases/index';
 import NavigationButtons from '../components/navigation/Navigation';
 import './Home.css';
@@ -44,8 +44,14 @@ const Home: React.FC = () => {
                   <IonTitle size="large">Hello Ion Title</IonTitle>
                 </IonToolbar>
               </IonHeader>
-              <Releases items={releases}/>
-              <NavigationButtons />
+              <IonContent>
+                <Releases items={releases}/>
+              </IonContent>
+              <IonFooter>
+                <IonToolbar>
+                  <NavigationButtons />
+                </IonToolbar>
+              </IonFooter>
             </IonContent>
           </IonPage>
     </AppContext.Provider>
