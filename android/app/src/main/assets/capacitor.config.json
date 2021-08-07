@@ -1,0 +1,6 @@
+{
+	"appId": "com.devwed.mozionic",
+	"appName": "mozionic",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

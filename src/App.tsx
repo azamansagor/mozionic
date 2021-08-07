@@ -1,6 +1,6 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import {Route} from 'react-router-dom';
+import {IonApp, IonRouterOutlet} from '@ionic/react';
+import {IonReactRouter} from '@ionic/react-router';
 import Home from './pages/Home';
 import Release from "./components/releases/Release";
 
@@ -24,16 +24,16 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/releases/:releaseName/:releaseId" component={Release} exact={true} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+    <IonApp>
+        <IonReactRouter>
+            <IonRouterOutlet>
+                <Route exact path="/">
+                    <Home/>
+                </Route>
+                <Route path="/releases/:releaseName/:releaseId" component={Release} exact={true}/>
+            </IonRouterOutlet>
+        </IonReactRouter>
+    </IonApp>
 );
 
 export default App;

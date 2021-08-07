@@ -1,10 +1,13 @@
-import React, { createContext, useState } from 'react';
+import React, {createContext} from 'react';
 
 export const AppContext = createContext({
-  page: 0,
-  setPage: () => {},
-  perPage: 5,
-  setPerPage: () => {},
-  totalPages: null,
-  setTotalPages: () => {},
+    page: 0,
+    setPage: () => {
+    },
+    perPage: 5,
+    setPerPage: () => {
+    },
+    totalPages: null,
+    setTotalPages: () => {
+    },
 });

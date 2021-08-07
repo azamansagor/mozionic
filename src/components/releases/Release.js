@@ -1,23 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import {
+    IonBackButton,
+    IonButtons,
     IonCard,
+    IonCardContent,
     IonCardHeader,
-    IonButton,
     IonCardSubtitle,
     IonCardTitle,
-    IonCardContent,
     IonContent,
+    IonHeader,
     IonPage,
-    IonHeader, IonToolbar, IonTitle
+    IonTitle,
+    IonToolbar
 } from '@ionic/react';
-import {
-    useParams
-} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import moment from "moment";
 
 // @ts-ignore
 const Release: React.FC = () => {
 
-    let { releaseName, releaseId } = useParams();
+    let {releaseName, releaseId} = useParams();
     const [hasError, setErrors] = useState(false);
     const [releaseList, setReleaseList] = useState([]);
 
@@ -39,26 +41,31 @@ const Release: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
+                    <IonButtons slot="start">
+                        <IonBackButton defaultHref="/"/>
+                    </IonButtons>
                     <IonTitle>MozIonic</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-            <h1>Repository: {releaseName}</h1>
-            {
-                releaseList &&
-                releaseList.map( (item, key ) => {
-                    return (
-                        <IonCard key={key}>
-                            <IonCardHeader>
-                                <IonCardSubtitle>Version: {item.tag_name}</IonCardSubtitle>
-                                <IonCardTitle>ID: {item.id}</IonCardTitle>
-                            </IonCardHeader>
-                            <IonCardContent>Date: {item.published_at}</IonCardContent>
-                        </IonCard>
-                    )
-                })
-            }
-        </IonContent>
+                <IonTitle className="ion-padding">Repository: {releaseName}</IonTitle>
+                {
+                    releaseList &&
+                    releaseList.map((item, key) => {
+                        return (
+                            <IonCard key={key}>
+                                <IonCardHeader>
+                                    <IonCardSubtitle>Version: {item.tag_name}</IonCardSubtitle>
+                                    <IonCardTitle>ID: {item.id}</IonCardTitle>
+                                </IonCardHeader>
+                                <IonCardContent>
+                                    Release Date: {moment(item.published_at).format('DD MMMM, YYYY')}
+                                </IonCardContent>
+                            </IonCard>
+                        )
+                    })
+                }
+            </IonContent>
         </IonPage>
     )
 };
