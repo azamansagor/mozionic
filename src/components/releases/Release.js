@@ -25,7 +25,7 @@ const Release: React.FC = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`https://api.github.com/repos/mozilla/zamboni/releases`);
+            const res = await fetch(`https://api.github.com/repos/mozilla/${releaseName}/releases`);
             res
                 .json()
                 .then(res => {
@@ -64,6 +64,15 @@ const Release: React.FC = () => {
                             </IonCard>
                         )
                     })
+                }
+
+                {
+                    releaseList.length <= 0 &&
+                    <IonCard>
+                        <IonCardHeader>
+                            <IonCardTitle>No repository found with the name <strong>{releaseName}</strong></IonCardTitle>
+                        </IonCardHeader>
+                    </IonCard>
                 }
             </IonContent>
         </IonPage>
